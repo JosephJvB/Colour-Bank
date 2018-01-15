@@ -5,11 +5,13 @@ import ColourBox from './ColourBox'
 
 const App = () => {
   const c = [ 'red', 'blue', 'yellow', 'green' ]
+  const count = [1, 2, 3, 4]
   return (
-    h(Fragment, [
-      c.map((c, i) => h(ColourBox, {'c': c, 'key': i})),
-      c.length > 100 && h(Fragment, 'this is how u conditional???')
-    ])
+    h('div', { 'className': 'columns' },
+      [
+        c.map((c, i) => h(ColourBox, { 'c': c, 'key': i, 'count': count[i] })),
+        c.length > 100 && h(Fragment, 'this is how u conditional???')
+      ])
   )
 }
 

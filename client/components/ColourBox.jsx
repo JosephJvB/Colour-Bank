@@ -2,17 +2,22 @@ import { Fragment } from 'react'
 import h from 'react-hyperscript'
 
 const ColourBox = (props) => {
-  const w = window.screen.availWidth
   const hi = window.screen.availHeight
+  // const w = window.screen.availWidth
   return (
-    h('div.col', {
+    h('div', {
+      'className': 'column is-3',
       'style': {
         'backgroundColor': props.c,
-        'height': hi / 4,
-        'width': w / 4
-      },
-      'onClick': () => console.log(window)
-    })
+        'height': hi / 4
+      }
+    },
+    h('button', {
+      'className': 'button is-large',
+      'onClick': () => console.log(props.count)
+    }, 'reset'),
+    h('p', props.count)
+    )
   )
 }
 
