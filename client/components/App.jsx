@@ -4,13 +4,14 @@ import h from 'react-hyperscript'
 import ColourBox from './ColourBox'
 
 const App = () => {
-  const c = [ 'red', 'blue', 'yellow', 'green' ]
+  const cols = [ 'rgba(236, 39, 39, 0.5)', 'rgba(7, 0, 234, 0.5)', 'rgba(251, 255, 35, 0.5)', 'rgba(40, 166, 1, 0.5)' ]
   const count = [1, 2, 3, 4]
   return (
-    h('div', { 'className': 'columns' },
+    h('div', { 'className': 'columns has-text-centered' },
       [
-        c.map((c, i) => h(ColourBox, { 'c': c, 'key': i, 'count': count[i] })),
-        c.length > 100 && h(Fragment, 'this is how u conditional???')
+        cols.map((c, i) => h(ColourBox, { 'col': c, 'key': i, 'count': count[i] })),
+        h('p', 22)
+        // c.length > 100 && h(Fragment, 'this is how u conditional???')
       ])
   )
 }
