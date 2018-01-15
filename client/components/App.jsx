@@ -1,10 +1,15 @@
-import React from 'react'
+import { Fragment } from 'react'
+import h from 'react-hyperscript'
+
+import ColourBox from './ColourBox'
 
 const App = () => {
+  const c = [ 'red', 'blue', 'yellow', 'green' ]
   return (
-    <div className='app'>
-      <h1>owo what's this</h1>
-    </div>
+    h(Fragment, [
+      c.map(c => h(ColourBox, {'c': c})),
+      c.length > 100 && h(Fragment, 'this is how u conditional???')
+    ])
   )
 }
 
