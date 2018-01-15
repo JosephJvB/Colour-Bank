@@ -7,7 +7,7 @@ const App = () => {
   const c = [ 'red', 'blue', 'yellow', 'green' ]
   return (
     h(Fragment, [
-      c.map(c => h(ColourBox, {'c': c})),
+      c.map((c, i) => h(ColourBox, {'c': c, 'key': i})),
       c.length > 100 && h(Fragment, 'this is how u conditional???')
     ])
   )
