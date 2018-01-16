@@ -7,9 +7,9 @@ const router = express.Router()
 
 router.use(bodyParser.json())
 
-router.get(':col', (req, res) => {
+router.get('/:col', (req, res) => {
   db.getCount(req.params.col)
-    .then(c => console.log(c))
+    .then(c => res.send(c))
 })
 
 router.put(':col/:count', (req, res) => {

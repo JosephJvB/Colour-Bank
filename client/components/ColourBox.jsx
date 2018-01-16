@@ -9,7 +9,7 @@ class ColourBox extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      count: 7
+      count: null
     }
     this.getCount = this.getCount.bind(this)
     this.colClick = this.colClick.bind(this)
@@ -22,7 +22,7 @@ class ColourBox extends React.Component {
 
   getCount () {
     reqCount(this.props.col)
-      .then(c => this.setState({ count: c }))
+      .then(r => this.setState({ count: r.body.count }))
       .catch(err => console.log(err))
   }
 

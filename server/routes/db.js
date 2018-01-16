@@ -5,6 +5,7 @@ function getCount (c) {
   return knex('Bank')
     .where('colour', c)
     .select('count')
+    .first()
 }
 
 function addCount (col, newCount) {
