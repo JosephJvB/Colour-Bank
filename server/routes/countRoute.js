@@ -12,9 +12,9 @@ router.get('/:col', (req, res) => {
     .then(c => res.send(c))
 })
 
-router.put(':col/:count', (req, res) => {
+router.put('/:col/:count', (req, res) => {
   db.addCount(req.params.col, req.params.count)
-    .then()
+    .then(() => res.send('nice'))
 })
 
 module.exports = router

@@ -30,15 +30,9 @@ class ColourBox extends React.Component {
     let count = this.state.count + 1
     if (r === 'reset') count = 0
     addCount(this.props.col, count)
-      .then(c => this.setState({ count: c }))
+      .then(() => this.getCount())
       .catch(err => console.log(err))
   }
-
-  // reset () {
-  //   addCount(this.props.col, 0)
-  //     .then(c => this.setState({ count: c }))
-  //     .catch(err => console.log(err))
-  // }
 
   render () {
     // const w = window.screen.availWidth
