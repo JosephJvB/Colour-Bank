@@ -1,6 +1,6 @@
 # Front-End, Back-End, React-Hyperscript.
 
-Quick project to brush up on sqlite3 database with Knex, GET and POST routes.
+Quick project to brush up on sqlite3 database with Knex, GET and PUT routes.
 Also another chance to play with react-hyperscript.
 
 ```Clone > Install > knex migrate:latest > knex seed:run > npm run dev```
