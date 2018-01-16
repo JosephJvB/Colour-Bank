@@ -1,14 +1,12 @@
 
 exports.up = (knex, Promise) => {
-  return knex.schema.createTableIfNotExists('Colours', (t) => {
+  return knex.schema.createTableIfNotExists('Bank', (t) => {
     t.increments('id').primary()
-    t.integer('red')
-    t.integer('blue')
-    t.integer('yellow')
-    t.integer('green')
+    t.string('colour')
+    t.integer('count')
   })
 }
 
 exports.down = (knex, Promise) => {
-  return knex.schema.dropTableIfExists('Colours')
+  return knex.schema.dropTableIfExists('Bank')
 }
