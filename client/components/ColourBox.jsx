@@ -13,7 +13,6 @@ class ColourBox extends React.Component {
     }
     this.getCount = this.getCount.bind(this)
     this.colClick = this.colClick.bind(this)
-    // this.reset = this.reset.bind(this)
   }
 
   componentDidMount () {
