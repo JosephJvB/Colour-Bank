@@ -20,7 +20,7 @@ class Informant extends Component {
   // functions go here
 
   handleSubmit () {
-    return console.log('im learnding')
+    return console.log(this.props)
   }
 
   // renderForm (config, fields) {
@@ -37,10 +37,10 @@ class Informant extends Component {
           h('form', { 'onSubmit': this.handleSubmit },
             [
               h(Field, {
-                'name': 'putter there',
+                'name': 'testInput',
                 'component': 'input',
                 'type': 'text',
-                'placeholder': 'joe\'s cool :smile:'
+                'placeholder': 'nature enter me'
               }),
               h('button',
                 { 'className': 'button is-large',
@@ -48,7 +48,13 @@ class Informant extends Component {
                 },
                 'sumbit'
               )
-            ])
+            ]),
+          h('button', {
+            'className': 'button is-large is-info',
+            'onClick': () => console.log(this.props)
+          },
+          'lets larn'
+          )
         // FIELDS.map(f => renderForm(f, FIELDS))
         ])
       )
