@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux'
-
-import temp from './temp'
+import { reducer as reduxFormReducer } from 'redux-form'
 
 export default combineReducers({
-  temp
+  form: reduxFormReducer
 })

@@ -9,14 +9,11 @@ const App = () => {
   const cols = ['red', 'blue', 'yellow', 'green']
   return (
     h(Fragment, [
-      h('div', { 'className': 'columns has-text-centered' },
+      h('div', { 'className': 'columns has-text-centered' }, [
         rgbs.map((c, i) => h(ColourBox, { 'key': i, 'rgb': c, 'col': cols[i] }))
-      ),
-      h('div', { 'className': 'columns has-text-centered' },
-        [
-          cols.length > 100 && h(Fragment, 'this is how u conditional???'),
-          h(Informant)
-        ])
+      ]),
+      cols.length > 100 && h(Fragment, 'this is how u conditional???'),
+      h(Informant)
     ])
   )
 }
