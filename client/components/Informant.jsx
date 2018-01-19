@@ -1,4 +1,4 @@
-import { Fragment, Component } from 'react'
+import { Fragment } from 'react'
 import { connect } from 'react-redux'
 import { reduxForm, Field, formValueSelector } from 'redux-form'
 import h from 'react-hyperscript'
