@@ -1,5 +1,6 @@
 import { Fragment, Component } from 'react'
-import { reduxForm, Field } from 'redux-form'
+import { connect } from 'react-redux'
+import { reduxForm, Field, formValueSelector } from 'redux-form'
 import h from 'react-hyperscript'
 
 // const FIELDS = [
@@ -9,18 +10,9 @@ import h from 'react-hyperscript'
 
 const { console } = global
 
-class Informant extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-    }
-    // binds go here
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
-  // functions go here
-
-  handleSubmit () {
-    return console.log(this.props)
+let Informant = props => {
+  function handleSubmit () {
+    return console.log(props)
   }
 
   // renderForm (config, fields) {
@@ -30,36 +22,34 @@ class Informant extends Component {
   //   )
   // }
 
-  render () {
-    return (
-      h('div', { 'className': 'columns has-text-centered' },
-        h(Fragment, ['hi im informant',
-          h('form', { 'onSubmit': this.handleSubmit },
-            [
-              h(Field, {
-                'name': 'testInput',
-                'component': 'input',
-                'type': 'text',
-                'placeholder': 'nature enter me'
-              }),
-              h('button',
-                { 'className': 'button is-large',
-                  'type': 'submit'
-                },
-                'sumbit'
-              )
-            ]),
-          h('button', {
-            'className': 'button is-large is-info',
-            'onClick': () => console.log(this.props)
-          },
-          'lets larn'
-          )
+  return (
+    h('div', { 'className': 'columns has-text-centered' },
+      h(Fragment, ['hi im informant',
+        h('form', { 'onSubmit': handleSubmit },
+          [
+            h(Field, {
+              'name': 'testInput',
+              'component': 'input',
+              'type': 'text',
+              'placeholder': 'nature enter me'
+            }),
+            h('button',
+              { 'className': 'button is-large',
+                'type': 'submit'
+              },
+              'sumbit'
+            )
+          ]),
+        h('button', {
+          'className': 'button is-large is-info',
+          'onClick': () => console.log(props)
+        },
+        'lets larn'
+        )
         // FIELDS.map(f => renderForm(f, FIELDS))
-        ])
-      )
+      ])
     )
-  }
+  )
 }
 
 // function validate (values) {
@@ -70,9 +60,19 @@ class Informant extends Component {
 //   return errors
 // }
 
-export default reduxForm({
+Informant = reduxForm({
   form: 'informant'
-  // destroyOnUnmount: false  << doesnt seem to work..
+  // destroyOnUnmount: false
   // fields: FIELDS.map(f => f.label), // label(name) and type(input, textarea)
   // validate
 })(Informant)
+
+const sel = formValueSelector('informant')
+Informant = connect(state => {
+  const value = sel(state, 'testInput')
+  return {
+    value
+  }
+})(Informant)
+
+export default Informant
