@@ -9,9 +9,9 @@ import h from 'react-hyperscript'
 // ]
 
 async function show (values) {
-  const name = await JSON.stringify(Object.keys(values)[0])
-  const val = await JSON.stringify(Object.values(values)[0])
-  await setTimeout(() => window.alert(`${name} - ${val}`), 1000)
+  const name = await Object.keys(values)[0]
+  const val = await Object.values(values)[0]
+  await setTimeout(() => window.alert(`Field: ${name}, InputVal: ${val}`), 1000)
 }
 
 const { console } = global
@@ -47,7 +47,9 @@ let Informant = props => {
           'onClick': () => console.log(props)
         },
         'lets larn'
-        )
+        ),
+        props.submitting && console.log('yep'),
+        !props.submitting && console.log('nup')
         // FIELDS.map(f => renderForm(f, FIELDS))
       ])
     )
