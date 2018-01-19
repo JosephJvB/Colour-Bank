@@ -8,13 +8,15 @@ const router = express.Router()
 router.use(bodyParser.json())
 
 router.get('/:col', (req, res) => {
-  db.getCount(req.params.col)
+  const { col } = req.params
+  db.getCount(col)
     .then(c => res.send(c))
 })
 
 router.put('/:col/:count', (req, res) => {
-  db.addCount(req.params.col, req.params.count)
-    .then(() => res.send('nice'))
+  const { col, count } = req.params
+  db.addCount(col, count)
+    .then(() => res.status(200).end())
 })
 
 module.exports = router
