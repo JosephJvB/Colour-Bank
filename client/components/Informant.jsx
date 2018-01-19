@@ -8,13 +8,15 @@ import h from 'react-hyperscript'
 //   { label: 'people', type: 'input' }
 // ]
 
+async function show (values) {
+  const name = await JSON.stringify(Object.keys(values)[0])
+  const val = await JSON.stringify(Object.values(values)[0])
+  await setTimeout(() => window.alert(`${name} - ${val}`), 1000)
+}
+
 const { console } = global
 
 let Informant = props => {
-  function handleSubmit () {
-    return console.log(props)
-  }
-
   // renderForm (config, fields) {
   //   const helper = 'help'
   //   return (
@@ -25,7 +27,7 @@ let Informant = props => {
   return (
     h('div', { 'className': 'columns has-text-centered' },
       h(Fragment, ['hi im informant',
-        h('form', { 'onSubmit': handleSubmit },
+        h('form', { 'onSubmit': props.handleSubmit(show) },
           [
             h(Field, {
               'name': 'testInput',
