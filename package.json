@@ -5,6 +5,7 @@
   "repository": "https://github.com/JosephJvB/testplate.git",
   "main": "server/index.js",
   "scripts": {
+    ".": "node server/emojis",
     "knex": "knex",
     "start": "webpack && node server",
     "dev": "nodemon --watch server & webpack --watch",
@@ -33,6 +34,7 @@
     "express": "^4.14.0",
     "jsx-loader": "^0.13.2",
     "knex": "^0.14.2",
+    "mz": "^2.7.0",
     "nodemon": "^1.11.0",
     "react": "16.2.0",
     "react-dom": "^16.2.0",
