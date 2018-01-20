@@ -28,8 +28,12 @@ function print () {
   fs.readFile(`${__dirname}/clean.json`, 'utf8')
     .then(res => JSON.parse(res))
     // .then(t => log(t))
-    .then(res => res.find(e => e.name.includes('happy')))
+    .then(res => res.find(e => e.name.includes('sad')))
     .then(e => log(e.ascii))
 }
 
 // No i had the structure right the first time haha lol. Except there are a few characters that cause errors when I try to JSON.parse.... have deleted them for now but want better fix
+
+// something that im missing on .includes
+
+// also want to try using filter but that breaks it too wtF ok ive had enough here
