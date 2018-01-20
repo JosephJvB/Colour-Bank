@@ -5,7 +5,7 @@ const { log } = global.console
 const wrong = `{"ascii": "ლ(•́•́ლ)","name": "boxing / fight{•̃_•̃","name": "},\n","name": "robot"},`
 const right = `{"ascii": "ლ(•́•́ლ)","name": "boxing / fight"},\n\n{"ascii": "{•̃_•̃}","name": "robot"},`
 
-transform()
+// transform()
 
 function transform () {
   fs.readFile(`${__dirname}/raw.txt`, 'utf8')
@@ -22,17 +22,14 @@ function transform () {
     .then(s => fs.writeFile(`${__dirname}/clean.json`, s, 'utf8'))
 }
 
-// print()
+print()
 
 function print () {
   fs.readFile(`${__dirname}/clean.json`, 'utf8')
-    .then(res => log(res))
+    .then(res => JSON.parse(res))
+    // .then(t => log(t))
+    .then(res => res.find(e => e.name.includes('happy')))
+    .then(e => log(e.ascii))
 }
 
-// OH BOY I HAD THE WRONG IDEA. dont want an array, want one big object, with many keys
-// will come back to this soon, big restructure needed
-
-// {
-//   ascii: :), name: smile,
-//   ascii: :(, name: frown
-// }
+// No i had the structure right the first time haha lol. Except there are a few characters that cause errors when I try to JSON.parse.... have deleted them for now but want better fix
