@@ -28,7 +28,7 @@ function print () {
   fs.readFile(`${__dirname}/clean.json`, 'utf8')
     .then(res => JSON.parse(res))
     // .then(t => log(t))
-    .then(res => res.find(e => e.name.includes('sad')))
+    .then(res => res.find(e => e.name.includes('happy')))
     .then(e => log(e.ascii))
 }
 
