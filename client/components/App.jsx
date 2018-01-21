@@ -1,5 +1,6 @@
 import { Fragment } from 'react'
 import h from 'react-hyperscript'
+import { Route } from 'react-router-dom'
 
 import ColourBox from './ColourBox'
 import Informant from './Informant'
@@ -9,11 +10,17 @@ const App = () => {
   const cols = ['red', 'blue', 'yellow', 'green']
   return (
     h(Fragment, [
-      h('div', { 'className': 'columns has-text-centered' }, [
-        rgbs.map((c, i) => h(ColourBox, { 'key': i, 'rgb': c, 'col': cols[i] }))
-      ]),
-      cols.length > 100 && h(Fragment, 'this is how u conditional???'),
-      h(Informant)
+      h(Route, {'path': '/',
+        'exact': true,
+        'component': () => h('div', { 'className': 'columns has-text-centered' },
+          rgbs.map((c, i) => h(ColourBox, { 'key': i, 'rgb': c, 'col': cols[i] }))
+        )
+      }
+      ),
+      h(Route, {'path': '/wizard1',
+        'component': Informant
+      }
+      )
     ])
   )
 }
