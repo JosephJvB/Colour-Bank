@@ -4,21 +4,21 @@ import { Route } from 'react-router-dom'
 
 import ColourContainer from './ColourContainer'
 import Informant from './Informant'
-import Wizard from './Wizard'
+import WizContainer from './Wizard/WizContainer'
 
 const App = () => {
   return (
     h(Fragment, [
       h(Route, {'path': '/',
-        'exact': true,
-        'component': ColourContainer
+        exact: true,
+        component: ColourContainer
       }),
-      h(Route, {'path': '/oldWizard',
-        'component': Informant
+      h(Route, {path: '/oldForm',
+        component: Informant
       }
       ),
       h(Route, {'path': '/newWizard1',
-        'component': Wizard
+        component: WizContainer
       }
       )
     ])

@@ -25,7 +25,7 @@ let Informant = props => {
   // }
 
   return (
-    h('div', { 'className': 'columns has-text-centered' },
+    h('div', { 'className': 'columns has-text-centered', style: { marginTop: 100 } },
       h(Fragment, ['hi im informant',
         h('form', { 'onSubmit': props.handleSubmit(show) },
           [
