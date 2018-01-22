@@ -13,4 +13,9 @@ const WizContainer = props => {
   )
 }
 
+// Wizard = connect(state => {
+//   const value = formValueSelector('wizard1')(state, 'wiz1Info')
+//   return { value }
+// })(Wizard)
+
 export default WizContainer

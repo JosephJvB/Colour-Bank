@@ -1,8 +1,8 @@
 import { Fragment } from 'react'
 import h from 'react-hyperscript'
 import { Link } from 'react-router-dom'
-import { reduxForm, Field, formValueSelector } from 'redux-form'
-import { connect } from 'react-redux'
+import { reduxForm, Field } from 'redux-form'
+// import { connect } from 'react-redux'
 
 // import Sound from 'react-sound'
 
@@ -13,12 +13,12 @@ async function sub (vals) {
   await log(v)
 }
 
-let Wizard = props => {
+const WizOne = props => {
   return (
     h(Fragment, [
-      'im new Wizard',
+      'im WizOne',
       h('form', { onSubmit: props.handleSubmit(sub) }, [
-        h(Field, { name: 'wizInfo',
+        h(Field, { name: 'wiz1Info',
           component: 'input',
           type: 'text',
           placeholder: 'answer true' }),
@@ -36,13 +36,6 @@ let Wizard = props => {
     ])
   )
 }
-Wizard = reduxForm({
+export default reduxForm({
   form: 'wizard1'
-})(Wizard)
-
-Wizard = connect(state => {
-  const value = formValueSelector('wizard1')(state, 'wizInfo')
-  return { value }
-})(Wizard)
-
-export default Wizard
+})(WizOne)
