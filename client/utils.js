@@ -12,6 +12,12 @@ function addCount (col, count) {
     .put(`${url}api/v1/${col}/${count}`)
 }
 
+function validate (vals) {
+  const errors = { }
+  if (!vals.wiz1Info) errors.wiz1Info = 'dingbat'
+  return errors
+}
+
 // function switcher (rgba) {
 //   switch (rgba) {
 //     case 'rgba(236, 39, 39, 0.6)': return 'red'
@@ -21,4 +27,4 @@ function addCount (col, count) {
 //   }
 // }
 
-module.exports = { reqCount, addCount }
+module.exports = { reqCount, addCount, validate }

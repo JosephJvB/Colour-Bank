@@ -2,6 +2,7 @@ import { Fragment } from 'react'
 import h from 'react-hyperscript'
 import { Link } from 'react-router-dom'
 import { reduxForm, Field } from 'redux-form'
+import { validate } from '../../utils'
 // import { connect } from 'react-redux'
 
 // import Sound from 'react-sound'
@@ -14,10 +15,11 @@ async function sub (vals) {
 }
 
 const WizOne = props => {
+  const { handleSubmit } = props
   return (
     h(Fragment, [
       'im WizOne',
-      h('form', { onSubmit: props.handleSubmit(sub) }, [
+      h('form', { onSubmit: handleSubmit(sub) }, [
         h(Field, { name: 'wiz1Info',
           component: 'input',
           type: 'text',
@@ -29,6 +31,7 @@ const WizOne = props => {
           },
           'answer')
       ]),
+      // h('button', { onClick: log('something') }),
       h(Link, { 'to': '/' }, [
         h('button', { className: 'button is-large' }, 'home sweet home')
       ])
@@ -37,5 +40,6 @@ const WizOne = props => {
   )
 }
 export default reduxForm({
-  form: 'wizard1'
+  form: 'wizard1',
+  validate
 })(WizOne)
