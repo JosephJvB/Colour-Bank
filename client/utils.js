@@ -13,10 +13,21 @@ function addCount (col, count) {
 }
 
 function validate (vals) {
+  // global.console.log(vals)
   const errors = { }
-  if (!vals.wiz1Info) errors.wiz1Info = 'dingbat'
+  if (!vals.wiz1Info) {
+    // global.console.log('oi')
+    errors.wiz1Info = 'dingbat'
+  }
   return errors
 }
+
+// validate is getting called twice on load but never again, no matter interaction with input or submit
+// actually it gets called if the user inputs text, and then leaves it empty
+// need to do it on blur too && if user tries to input no text
+// so validate not being run on submit
+
+// where does errors object go lol
 
 // function switcher (rgba) {
 //   switch (rgba) {

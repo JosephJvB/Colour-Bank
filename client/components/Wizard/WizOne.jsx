@@ -14,6 +14,18 @@ async function sub (vals) {
   await log(v)
 }
 
+const renderField = ({ label, meta, input }) => {
+  // log(props)
+  const { touched, error } = meta
+  return (
+    h(Fragment, [
+      h('label', label),
+      h('input', {input: input}),
+      error && touched && h('span', error)
+    ])
+  )
+}
+
 const WizOne = props => {
   const { handleSubmit } = props
   return (
@@ -21,7 +33,8 @@ const WizOne = props => {
       'im WizOne',
       h('form', { onSubmit: handleSubmit(sub) }, [
         h(Field, { name: 'wiz1Info',
-          component: 'input',
+          component: renderField,
+          label: 'tex here',
           type: 'text',
           placeholder: 'answer true' }),
         h('button',
@@ -31,7 +44,7 @@ const WizOne = props => {
           },
           'answer')
       ]),
-      // h('button', { onClick: log('something') }),
+      h('button', { onClick: () => log(props) }),
       h(Link, { 'to': '/' }, [
         h('button', { className: 'button is-large' }, 'home sweet home')
       ])
