@@ -14,13 +14,14 @@ async function sub (vals) {
   await log(v)
 }
 
-const renderField = ({ label, meta, input }) => {
-  // log(props)
+const renderField = (props) => {
+  log(props)
+  const { label, meta, input } = props
   const { touched, error } = meta
   return (
     h(Fragment, [
       h('label', label),
-      h('input', {input: input}),
+      h('input', {input}),
       error && touched && h('span', error)
     ])
   )
