@@ -1,19 +1,23 @@
 import { Fragment as F } from 'react'
 import h from 'react-hyperscript'
 import { Field, reduxForm } from 'redux-form'
+import { Link } from 'react-router-dom'
+
 import { validate } from '../../utils'
 
+const { log } = global.console
+
 const WizTwo = (props) => {
-  const { next, prev } = props
   return (
     h(F, [
       'wiz2',
-      h('button', {
-        onClick: prev
-      }, 'prev'),
-      h('button', {
-        onClick: next
-      }, 'next')
+      h(Link, { to: '/wiz1' }, [
+        h('button', {}, 'prev')
+      ]),
+      h('button', { onClick: () => log(props) }, 'props'),
+      h(Link, { to: '/wiz3' }, [
+        h('button', {}, 'next')
+      ])
     ])
   )
 }

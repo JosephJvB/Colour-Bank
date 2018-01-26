@@ -45,10 +45,13 @@ const WizOne = props => {
           },
           'answer')
       ]),
-      h('button', { onClick: next }, 'next'),
+      h(Link, { to: '/wiz2' }, [
+        h('button', { onClick: next }, 'next')
+      ]),
       h(Link, { 'to': '/' }, [
         h('button', { className: 'button is-large' }, 'home sweet home')
-      ])
+      ]),
+      h('button', { onClick: () => log(props) }, 'props')
       // h(Sound, { 'url': '/sounds/pinball.mp3', 'playStatus': 'PLAYING' })
     ])
   )
