@@ -15,20 +15,20 @@ async function sub (vals) {
 }
 
 const renderField = (props) => {
-  log(props)
+  // log(props)
   const { label, meta, input } = props
   const { touched, error } = meta
   return (
     h(Fragment, [
       h('label', label),
-      h('input', {input}),
+      h('input', input),
       error && touched && h('span', error)
     ])
   )
 }
 
 const WizOne = props => {
-  const { handleSubmit } = props
+  const { handleSubmit, next } = props
   return (
     h(Fragment, [
       'im WizOne',
@@ -45,7 +45,7 @@ const WizOne = props => {
           },
           'answer')
       ]),
-      h('button', { onClick: () => log(props) }),
+      h('button', { onClick: next }, 'next'),
       h(Link, { 'to': '/' }, [
         h('button', { className: 'button is-large' }, 'home sweet home')
       ])
@@ -55,5 +55,6 @@ const WizOne = props => {
 }
 export default reduxForm({
   form: 'wizard1',
+  // destroyOnUnmount: false,
   validate
 })(WizOne)

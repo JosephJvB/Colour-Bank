@@ -13,7 +13,7 @@ function addCount (col, count) {
 }
 
 function validate (vals) {
-  global.console.log(vals)
+  // global.console.log(vals)
   const errors = { }
   if (!vals.wiz1Info) {
     // global.console.log('oi')
