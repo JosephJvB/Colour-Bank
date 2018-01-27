@@ -14,7 +14,7 @@ async function show (values) {
   await setTimeout(() => window.alert(`Field: ${name}, InputVal: ${val}`), 1000)
 }
 
-const { console } = global
+const { log } = global.console
 
 let Informant = props => {
   // renderForm (config, fields) {
@@ -25,7 +25,7 @@ let Informant = props => {
   // }
 
   return (
-    h('div', { 'className': 'columns has-text-centered' },
+    h('div', { 'className': 'columns has-text-centered', style: { marginTop: 100 } },
       h(Fragment, ['hi im informant',
         h('form', { 'onSubmit': props.handleSubmit(show) },
           [
@@ -44,12 +44,12 @@ let Informant = props => {
           ]),
         h('button', {
           'className': 'button is-large is-info',
-          'onClick': () => console.log(props)
+          'onClick': () => log(props)
         },
         'lets larn'
         ),
-        props.submitting && console.log('yep'),
-        !props.submitting && console.log('nup')
+        props.submitting && log('yep'),
+        !props.submitting && log('nup')
         // FIELDS.map(f => renderForm(f, FIELDS))
       ])
     )
