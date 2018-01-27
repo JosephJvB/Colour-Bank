@@ -13,13 +13,15 @@ import Results from './Results'
 const { log } = global.console
 
 const DaWizard = () => {
+  const pages = [ WizOne, WizTwo, WizThree ]
   return (
     h(F, [
-      h(Sound, { url: '/sounds/pinball.mp3', playStatus: 'PLAYING' }),
+      // h(Sound, { url: '/sounds/pinball.mp3', playStatus: 'PLAYING' }),
       'Component: ',
-      h(Route, { path: '/Wiz/1', render: () => h(WizOne, { sub: sub, renderField: renderField }) }),
-      h(Route, { path: '/Wiz/2', render: () => h(WizTwo, { sub: sub, renderField: renderField }) }),
-      h(Route, { path: '/Wiz/3', render: () => h(WizThree, { sub: sub, renderField: renderField }) }),
+      pages.map((p, i) => h(Route, { key: i, path: `/Wiz/${i + 1}`, render: () => h(p, { sub, renderField }) })),
+      // h(Route, { path: '/Wiz/1', render: () => h(WizOne, { sub, renderField }) }),
+      // h(Route, { path: '/Wiz/2', render: () => h(WizTwo, { sub, renderField }) }),
+      // h(Route, { path: '/Wiz/3', render: () => h(WizThree, { sub, renderField }) }),
       h(Route, { path: '/Wiz/results', component: Results })
     ])
   )
