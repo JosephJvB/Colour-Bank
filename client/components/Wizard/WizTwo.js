@@ -11,11 +11,11 @@ const WizTwo = (props) => {
   return (
     h(F, [
       'wiz2',
-      h(Link, { to: '/wiz1' }, [
+      h(Link, { to: '/Wiz/1' }, [
         h('button', {}, 'prev')
       ]),
       h('button', { onClick: () => log(props) }, 'props'),
-      h(Link, { to: '/wiz3' }, [
+      h(Link, { to: '/Wiz/3' }, [
         h('button', {}, 'next')
       ])
     ])

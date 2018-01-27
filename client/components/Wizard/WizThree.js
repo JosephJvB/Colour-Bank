@@ -11,14 +11,14 @@ const WizThree = (props) => {
   return (
     h(F, [
       'wiz3',
-      h(Link, { to: '/wiz2' }, [
+      h(Link, { to: '/Wiz/2' }, [
         h('button', {
         }, 'prev')
       ]),
       h('button', { onClick: () => log(props) }, 'props'),
-      h(Link, { to: '/' }, [
+      h(Link, { to: '/Wiz/results' }, [
         h('button', {
-        }, 'home')
+        }, 'finale')
       ])
     ])
   )

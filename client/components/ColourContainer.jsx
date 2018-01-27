@@ -12,7 +12,7 @@ const ColourContainer = () => {
       h('div', { 'className': 'columns has-text-centered' },
         rgbs.map((c, i) => h(ColourBox, { 'key': i, 'rgb': c, 'col': cols[i] }))
       ),
-      h(Link, { to: '/wiz1' }, [
+      h(Link, { to: '/Wiz/1' }, [
         h('button', { 'className': 'button is-large' }, 'the Wizard awaits...')
       ])
     ])

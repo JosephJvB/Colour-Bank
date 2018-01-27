@@ -45,7 +45,7 @@ const WizOne = props => {
           },
           'answer')
       ]),
-      h(Link, { to: '/wiz2' }, [
+      h(Link, { to: '/Wiz/2' }, [
         h('button', { onClick: next }, 'next')
       ]),
       h(Link, { 'to': '/' }, [

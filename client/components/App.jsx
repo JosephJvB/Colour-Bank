@@ -4,11 +4,8 @@ import { Route } from 'react-router-dom'
 
 import ColourContainer from './ColourContainer'
 import Informant from './Informant'
-// import WizContainer from './Wizard/WizContainer'
 
-import WizOne from './Wizard/WizOne'
-import WizTwo from './Wizard/WizTwo'
-import WizThree from './Wizard/WizThree'
+import DaWizard from './Wizard/DaWizard'
 
 const App = () => {
   return (
@@ -17,14 +14,8 @@ const App = () => {
         exact: true,
         component: ColourContainer
       }),
-      h(Route, {path: '/oldForm',
-        component: Informant
-      }
-      ),
-      h(Route, { path: '/wiz1', exact: false, component: WizOne }),
-      // h('button', { onClick: () => log() }, 'contprops'),
-      h(Route, { path: '/wiz2', exact: false, component: WizTwo }),
-      h(Route, { path: '/wiz3', exact: false, component: WizThree })
+      h(Route, { path: '/oldForm', component: Informant }),
+      h(Route, { path: '/Wiz', component: DaWizard })
     ])
   )
 }
