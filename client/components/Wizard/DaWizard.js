@@ -3,6 +3,7 @@ import h from 'react-hyperscript'
 import { Route } from 'react-router-dom'
 // import { formValueSelector } from 'redux-form'
 // import { connect } from 'react-redux'
+import Sound from 'react-sound'
 
 import WizOne from './WizOne'
 import WizTwo from './WizTwo'
@@ -14,6 +15,7 @@ const { log } = global.console
 const DaWizard = () => {
   return (
     h(F, [
+      h(Sound, { url: '/sounds/pinball.mp3', playStatus: 'PLAYING' }),
       'Component: ',
       h(Route, { path: '/Wiz/1', render: () => h(WizOne, { sub: sub, renderField: renderField }) }),
       h(Route, { path: '/Wiz/2', render: () => h(WizTwo, { sub: sub, renderField: renderField }) }),
