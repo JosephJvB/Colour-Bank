@@ -1,21 +1,28 @@
 import { Fragment } from 'react'
 import h from 'react-hyperscript'
+import { Route } from 'react-router-dom'
 
-import ColourBox from './ColourBox'
+import ColourContainer from './ColourContainer'
 import Informant from './Informant'
 
+import DaWizard from './Wizard/DaWizard'
+
 const App = () => {
-  const rgbs = [ 'rgba(236, 39, 39, 0.6)', 'rgba(7, 0, 234, 0.6)', 'rgba(251, 255, 35, 0.6)', 'rgba(40, 166, 1, 0.6)' ]
-  const cols = ['red', 'blue', 'yellow', 'green']
   return (
     h(Fragment, [
-      h('div', { 'className': 'columns has-text-centered' }, [
-        rgbs.map((c, i) => h(ColourBox, { 'key': i, 'rgb': c, 'col': cols[i] }))
-      ]),
-      cols.length > 100 && h(Fragment, 'this is how u conditional???'),
-      h(Informant)
+      h(Route, {'path': '/',
+        exact: true,
+        component: ColourContainer
+      }),
+      h(Route, { path: '/oldForm', component: Informant }),
+      h(Route, { path: '/Wiz', component: DaWizard })
     ])
   )
 }
 
 export default App
+
+// export default connect(state => {
+//   const value = formValueSelector('wizard1')(state, 'wiz1Info')
+//   return { value }
+// })(WizContainer)
