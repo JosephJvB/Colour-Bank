@@ -19,6 +19,8 @@ const Results = props => {
 }
 
 export default connect(state => {
-  const value = formValueSelector('wizard1')(state, 'wiz1Info')
-  return { value }
+  const value1 = formValueSelector('Wizard1')(state, 'wiz1Info')
+  const value2 = formValueSelector('Wizard2')(state, 'wiz2Info')
+  const value3 = formValueSelector('Wizard3')(state, 'wiz3Info')
+  return { value1, value2, value3 }
 })(Results)

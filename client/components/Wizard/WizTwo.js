@@ -8,9 +8,20 @@ import { validate } from '../../utils'
 const { log } = global.console
 
 const WizTwo = (props) => {
+  const { handleSubmit, renderField, sub } = props
   return (
     h(F, [
       'wiz2',
+      h('form', { onSubmit: handleSubmit(sub) }, [
+        h(Field, {
+          name: 'wiz2Info',
+          component: renderField,
+          label: 'wiz2',
+          type: 'text',
+          placeholder: 'ur text here'
+        }),
+        h('button', { type: 'submit' }, 'submit')
+      ]),
       h(Link, { to: '/Wiz/1' }, [
         h('button', {}, 'prev')
       ]),
@@ -24,5 +35,6 @@ const WizTwo = (props) => {
 
 export default reduxForm({
   form: 'Wizard2',
+  destroyOnUnmount: false,
   validate
 })(WizTwo)
