@@ -3,18 +3,18 @@ import h from 'react-hyperscript'
 import { Link } from 'react-router-dom'
 import { reduxForm, Field } from 'redux-form'
 
-import { validate } from '../../utils'
+import { validate, sub, renderField } from '../../utils'
 
 // import Sound from 'react-sound'
 
 const { log } = global.console
 
 const WizOne = props => {
-  const { handleSubmit, renderField, sub } = props
+  const { handleSubmit } = props
   return (
     h(Fragment, [
       'im WizOne',
-      h('form', { onSubmit: handleSubmit(sub) }, [
+      h('form', { onSubmit: handleSubmit(() => sub(props)) }, [
         h(Field, { name: 'wiz1Info',
           component: renderField,
           label: 'wiz1',
@@ -41,5 +41,6 @@ const WizOne = props => {
 export default reduxForm({
   form: 'Wizard1',
   destroyOnUnmount: false,
+  forceUnregisterOnUnmount: true,
   validate
 })(WizOne)

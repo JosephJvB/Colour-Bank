@@ -6,6 +6,7 @@ import ColourContainer from './ColourContainer'
 import Informant from './Informant'
 
 import DaWizard from './Wizard/DaWizard'
+import PeeFive from './PeeFive'
 
 const App = () => {
   return (
@@ -15,7 +16,8 @@ const App = () => {
         component: ColourContainer
       }),
       h(Route, { path: '/oldForm', component: Informant }),
-      h(Route, { path: '/Wiz', component: DaWizard })
+      h(Route, { path: '/Wiz', component: DaWizard }),
+      h(Route, { path: '/p5', component: PeeFive })
     ])
   )
 }

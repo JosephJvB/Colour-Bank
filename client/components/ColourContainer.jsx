@@ -14,6 +14,9 @@ const ColourContainer = () => {
       ),
       h(Link, { to: '/Wiz/1' }, [
         h('button', { 'className': 'button is-large' }, 'the Wizard awaits...')
+      ]),
+      h(Link, { to: '/p5' }, [
+        h('button', { }, 'p5 :)')
       ])
     ])
   )

@@ -1,4 +1,8 @@
 import request from 'superagent'
+import h from 'react-hyperscript'
+import { Fragment as F } from 'react'
+
+const { log } = global.console
 
 const url = 'http://localhost:3000/'
 
@@ -22,6 +26,27 @@ function validate (vals) {
   return errors
 }
 
+// function passed to handleSubmit, logs the values entered
+async function sub (props) {
+  const clear = await props.clearFields
+  await log(props.form)
+  await clear('wiz1Info')
+}
+
+// function that mad props are injected into. rendered the form field
+const renderField = (props) => {
+  // log(props)
+  const { label, meta, input } = props
+  const { touched, error } = meta
+  return (
+    h(F, [
+      h('label', label),
+      h('input', input),
+      error && touched && h('span', error)
+    ])
+  )
+}
+
 // validate is getting called twice on load but never again, no matter interaction with input or submit
 // actually it gets called if the user inputs text, and then leaves it empty
 // need to do it on blur too && if user tries to input no text
@@ -38,4 +63,4 @@ function validate (vals) {
 //   }
 // }
 
-module.exports = { reqCount, addCount, validate }
+module.exports = { reqCount, addCount, validate, renderField, sub }

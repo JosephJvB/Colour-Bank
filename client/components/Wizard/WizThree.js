@@ -3,12 +3,12 @@ import h from 'react-hyperscript'
 import { Field, reduxForm } from 'redux-form'
 import { Link } from 'react-router-dom'
 
-import { validate } from '../../utils'
+import { validate, sub, renderField } from '../../utils'
 
 const { log } = global.console
 
 const WizThree = (props) => {
-  const { handleSubmit, renderField, sub } = props
+  const { handleSubmit } = props
   return (
     h(F, [
       'wiz3',
@@ -38,5 +38,6 @@ const WizThree = (props) => {
 export default reduxForm({
   form: 'Wizard3',
   destroyOnUnmount: false,
+  forceUnregisterOnUnmount: true,
   validate
 })(WizThree)
