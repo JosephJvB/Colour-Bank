@@ -12,7 +12,7 @@ const WizTwo = (props) => {
   return (
     h(F, [
       'wiz2',
-      h('form', { onSubmit: handleSubmit(() => sub(props)) }, [
+      h('form', { onSubmit: handleSubmit(sub) }, [
         h(Field, {
           name: 'wiz2Info',
           component: renderField,
@@ -20,15 +20,14 @@ const WizTwo = (props) => {
           type: 'text',
           placeholder: 'ur text here'
         }),
-        h('button', { type: 'submit' }, 'submit')
+        h(Link, { to: '/Wiz/3' }, [
+          h('button', { type: 'submit' }, 'next')
+        ])
       ]),
       h(Link, { to: '/Wiz/1' }, [
         h('button', {}, 'prev')
       ]),
-      h('button', { onClick: () => log(props) }, 'props'),
-      h(Link, { to: '/Wiz/3' }, [
-        h('button', {}, 'next')
-      ])
+      h('button', { onClick: () => log(props) }, 'props')
     ])
   )
 }

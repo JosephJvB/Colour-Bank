@@ -14,21 +14,20 @@ const WizOne = props => {
   return (
     h(Fragment, [
       'im WizOne',
-      h('form', { onSubmit: handleSubmit(() => sub(props)) }, [
+      h('form', { onSubmit: handleSubmit(sub) }, [
         h(Field, { name: 'wiz1Info',
           component: renderField,
           label: 'wiz1',
           type: 'text',
           placeholder: 'ur text here' }),
-        h('button',
-          {
-            className: 'button is-large',
-            type: 'submit'
-          },
-          'submit')
-      ]),
-      h(Link, { to: '/Wiz/2' }, [
-        h('button', { }, 'next')
+        h(Link, { to: '/Wiz/2' }, [
+          h('button',
+            {
+              className: 'button is-large',
+              type: 'submit'
+            },
+            'next')
+        ])
       ]),
       h(Link, { 'to': '/' }, [
         h('button', { className: 'button is-large' }, 'home sweet home')

@@ -4,6 +4,8 @@ import { Fragment as F } from 'react'
 
 const { log } = global.console
 
+// const { getItem, setItem, clear } = window.localStorage
+
 const url = 'http://localhost:3000/'
 
 function reqCount (col) {
@@ -27,20 +29,9 @@ function validate (vals) {
 }
 
 // function passed to handleSubmit, logs the values entered
-async function sub (props) {
-  const { dispatch, clearFields, form } = await props
-  const field = await getField(form)
-  await log(props)
-  // await log(clearFields(false, form, 'wiz1Info').meta)
-  await dispatch(clearFields(false, form, field))
-}
-
-function getField (formName) {
-  switch (formName) {
-    case 'Wizard1': return 'wiz1Info'
-    case 'Wizard2': return 'wiz2Info'
-    case 'Wizard3': return 'wiz3Info'
-  }
+async function sub (vals) {
+// no luck in getting or setting yet..
+  log(vals)
 }
 
 // function that mad props are injected into. rendered the form field
@@ -56,6 +47,8 @@ const renderField = (props) => {
     ])
   )
 }
+
+module.exports = { reqCount, addCount, validate, renderField, sub }
 
 // validate is getting called twice on load but never again, no matter interaction with input or submit
 // actually it gets called if the user inputs text, and then leaves it empty
@@ -73,4 +66,17 @@ const renderField = (props) => {
 //   }
 // }
 
-module.exports = { reqCount, addCount, validate, renderField, sub }
+// old sub function
+// const { dispatch, clearFields, form } = await props
+// const field = await getField(form)
+// await log(props)
+// // await log(clearFields(false, form, 'wiz1Info').meta)
+// await dispatch(clearFields(false, form, field))
+
+// function getField(formName) {
+//   switch (formName) {
+//     case 'Wizard1': return 'wiz1Info'
+//     case 'Wizard2': return 'wiz2Info'
+//     case 'Wizard3': return 'wiz3Info'
+//   }
+// }

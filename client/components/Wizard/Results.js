@@ -7,12 +7,21 @@ import { Link } from 'react-router-dom'
 const { log } = global.console
 
 const Results = props => {
+  const { value1, value2, value3 } = props
   return (
     h(F, [
       'ty for taking my test',
       h('button', { onClick: () => log(props) }, 'whats in props'),
       h(Link, { to: '/Wiz/1' }, [
         h('button', { }, 'home :)')
+      ]),
+      h('div', { className: 'has-text-centered' }, [
+        h('br'),
+        value1,
+        h('br'),
+        value2,
+        h('br'),
+        value3
       ])
     ])
   )

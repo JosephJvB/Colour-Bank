@@ -12,7 +12,7 @@ const WizThree = (props) => {
   return (
     h(F, [
       'wiz3',
-      h('form', { onSubmit: handleSubmit(() => sub(props)) }, [
+      h('form', { onSubmit: handleSubmit(sub) }, [
         h(Field, {
           name: 'wiz3Info',
           component: renderField,
@@ -20,17 +20,15 @@ const WizThree = (props) => {
           type: 'text',
           placeholder: 'ur text here'
         }),
-        h('button', { type: 'submit' }, 'submit')
+        h(Link, { to: '/Wiz/results' }, [
+          h('button', { type: 'submit' }, 'next')
+        ])
       ]),
       h(Link, { to: '/Wiz/2' }, [
         h('button', {
         }, 'prev')
       ]),
-      h('button', { onClick: () => log(props) }, 'props'),
-      h(Link, { to: '/Wiz/results' }, [
-        h('button', {
-        }, 'finale')
-      ])
+      h('button', { onClick: () => log(props) }, 'props')
     ])
   )
 }
