@@ -28,9 +28,19 @@ function validate (vals) {
 
 // function passed to handleSubmit, logs the values entered
 async function sub (props) {
-  const clear = await props.clearFields
-  await log(props.form)
-  await clear('wiz1Info')
+  const { dispatch, clearFields, form } = await props
+  const field = await getField(form)
+  await log(props)
+  // await log(clearFields(false, form, 'wiz1Info').meta)
+  await dispatch(clearFields(false, form, field))
+}
+
+function getField (formName) {
+  switch (formName) {
+    case 'Wizard1': return 'wiz1Info'
+    case 'Wizard2': return 'wiz2Info'
+    case 'Wizard3': return 'wiz3Info'
+  }
 }
 
 // function that mad props are injected into. rendered the form field

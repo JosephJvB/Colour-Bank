@@ -12,7 +12,7 @@ const WizThree = (props) => {
   return (
     h(F, [
       'wiz3',
-      h('form', { onSubmit: handleSubmit(sub) }, [
+      h('form', { onSubmit: handleSubmit(() => sub(props)) }, [
         h(Field, {
           name: 'wiz3Info',
           component: renderField,
