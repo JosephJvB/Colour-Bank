@@ -19,10 +19,7 @@ const WizThree = (props) => {
           label: 'wiz3',
           type: 'text',
           placeholder: 'ur text here'
-        }),
-        h(Link, { to: '/Wiz/results' }, [
-          h('button', { type: 'submit' }, 'next')
-        ])
+        })
       ]),
       h(Link, { to: '/Wiz/2' }, [
         h('button', {

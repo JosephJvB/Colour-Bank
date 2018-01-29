@@ -19,15 +19,7 @@ const WizOne = props => {
           component: renderField,
           label: 'wiz1',
           type: 'text',
-          placeholder: 'ur text here' }),
-        h(Link, { to: '/Wiz/2' }, [
-          h('button',
-            {
-              className: 'button is-large',
-              type: 'submit'
-            },
-            'next')
-        ])
+          placeholder: 'ur text here' })
       ]),
       h(Link, { 'to': '/' }, [
         h('button', { className: 'button is-large' }, 'home sweet home')

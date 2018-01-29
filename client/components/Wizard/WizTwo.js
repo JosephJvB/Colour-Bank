@@ -19,10 +19,7 @@ const WizTwo = (props) => {
           label: 'wiz2',
           type: 'text',
           placeholder: 'ur text here'
-        }),
-        h(Link, { to: '/Wiz/3' }, [
-          h('button', { type: 'submit' }, 'next')
-        ])
+        })
       ]),
       h(Link, { to: '/Wiz/1' }, [
         h('button', {}, 'prev')

@@ -1,4 +1,5 @@
 import request from 'superagent'
+import { Link } from 'react-router-dom'
 import h from 'react-hyperscript'
 import { Fragment as F } from 'react'
 
@@ -20,11 +21,11 @@ function addCount (col, count) {
 
 function validate (vals) {
   // global.console.log(vals)
+  const fields = [ 'wiz1Info', 'wiz2Info', 'wiz3Info' ]
   const errors = { }
-  if (!vals.wiz1Info) {
-    // global.console.log('oi')
-    errors.wiz1Info = 'dingbat'
-  }
+  fields.forEach(field => {
+    if (!vals[field]) errors[field] = 'please enter a value'
+  })
   return errors
 }
 
@@ -35,14 +36,19 @@ async function sub (vals) {
 }
 
 // function that mad props are injected into. rendered the form field
-const renderField = (props) => {
+const renderField = ({ label, meta, input }) => {
   // log(props)
-  const { label, meta, input } = props
   const { touched, error } = meta
+  const butState = error
+  let next = Number(label[label.length - 1]) + 1 < 4 ? Number(label[label.length - 1]) + 1 : 'results'
+  // if (next === 4) next = 'results'
   return (
     h(F, [
       h('label', label),
       h('input', input),
+      h(Link, { to: `/Wiz/${next}` }, [
+        h('button', { type: 'submit', disabled: butState }, 'next')
+      ]),
       error && touched && h('span', error)
     ])
   )
