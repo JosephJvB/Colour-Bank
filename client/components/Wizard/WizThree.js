@@ -19,11 +19,11 @@ const WizThree = (props) => {
           label: 'wiz3',
           type: 'text',
           placeholder: 'ur text here'
-        })
+        }),
+        h('button', { type: 'submit' }, 'lol')
       ]),
       h(Link, { to: '/Wiz/2' }, [
-        h('button', {
-        }, 'prev')
+        h('button', { className: 'button is-info' }, 'prev')
       ]),
       h('button', { onClick: () => log(props) }, 'props')
     ])

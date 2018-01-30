@@ -22,7 +22,7 @@ const WizOne = props => {
           placeholder: 'ur text here' })
       ]),
       h(Link, { 'to': '/' }, [
-        h('button', { className: 'button is-large' }, 'home sweet home')
+        h('button', { className: 'button is-info' }, 'home sweet home')
       ]),
       h('button', { onClick: () => log(props) }, 'props')
       // h(Sound, { 'url': '/sounds/pinball.mp3', 'playStatus': 'PLAYING' })

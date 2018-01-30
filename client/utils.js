@@ -21,35 +21,36 @@ function addCount (col, count) {
 
 function validate (vals) {
   // global.console.log(vals)
-  const fields = [ 'wiz1Info', 'wiz2Info', 'wiz3Info' ]
   const errors = { }
+  const fields = [ 'wiz1Info', 'wiz2Info', 'wiz3Info' ]
   fields.forEach(field => {
-    if (!vals[field]) errors[field] = 'please enter a value'
+    if (!vals[field]) errors[field] = '<-- value here :)'
   })
   return errors
 }
 
 // function passed to handleSubmit, logs the values entered
 async function sub (vals) {
-// no luck in getting or setting yet..
-  log(vals)
+  // no luck in getting or setting yet..
+  await log(vals)
 }
 
-// function that mad props are injected into. rendered the form field
+// function that mad props are injected into. renders the field: input, error and submit / continue button
 const renderField = ({ label, meta, input }) => {
-  // log(props)
-  const { touched, error } = meta
-  const butState = error
-  let next = Number(label[label.length - 1]) + 1 < 4 ? Number(label[label.length - 1]) + 1 : 'results'
+  // log(meta)
+  const { visited, error } = meta
+  let next = Number(label[3]) + 1 < 4 ? Number(label[3]) + 1 : 'results'
   // if (next === 4) next = 'results'
+  const but = !error ? 'is-success' : 'is-danger'
+  input.autoComplete = 'off'
   return (
     h(F, [
       h('label', label),
       h('input', input),
       h(Link, { to: `/Wiz/${next}` }, [
-        h('button', { type: 'submit', disabled: butState }, 'next')
+        h('button', { type: 'submit', disabled: error, className: `button ${but}` }, 'next')
       ]),
-      error && touched && h('span', error)
+      visited && error && h('span', error)
     ])
   )
 }

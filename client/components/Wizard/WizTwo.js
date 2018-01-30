@@ -22,7 +22,7 @@ const WizTwo = (props) => {
         })
       ]),
       h(Link, { to: '/Wiz/1' }, [
-        h('button', {}, 'prev')
+        h('button', { className: 'button is-info' }, 'prev')
       ]),
       h('button', { onClick: () => log(props) }, 'props')
     ])
