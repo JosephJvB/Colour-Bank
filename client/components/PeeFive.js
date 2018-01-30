@@ -9,6 +9,7 @@ const PeeFive = () => {
     h(F, [
       'im p5',
       h(P5Wrapper, { sketch })
+      // so basically the P5Wrapper takes a vanilla js file and is able to render it inside react framework. pretty neat
     ])
   )
 }

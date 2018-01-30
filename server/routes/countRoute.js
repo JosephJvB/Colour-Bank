@@ -1,11 +1,17 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+// const fs = require('mz/fs')
 
 const db = require('./db')
 
 const router = express.Router()
 
 router.use(bodyParser.json())
+
+// router.get('/baka', (req, res) => {
+//   global.console.log('hi')
+//   res.send(fs).end()
+// })
 
 router.get('/:col', (req, res) => {
   const { col } = req.params
