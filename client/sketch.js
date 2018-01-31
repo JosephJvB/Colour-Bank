@@ -1,14 +1,15 @@
-// import request from 'superagent'
+import request from 'superagent'
 
 const w = window.screen.availWidth / 2
 const h = window.screen.availHeight / 2
-// const { log } = global.console
+const { log } = global.console
 
 export default function sketch (p) {
   // let rotation = 0
 
   p.setup = () => {
     // log(p)
+    // ESKEDDIT(p)
     p.createCanvas(w, h, p.WEBGL)
   }
 
@@ -19,7 +20,7 @@ export default function sketch (p) {
   // }
 
   p.draw = () => {
-    p.background(200)
+    p.background(51)
 
     let x = p.mouseX - p.width / 2
     let y = p.mouseY - p.height / 2
@@ -31,15 +32,10 @@ export default function sketch (p) {
   }
 }
 
-// function ESKEDDIT (data) {
-//   return request
-//     .get('http://localhost:3000/api/v1/baka')
-//     .end((err, res) => {
-//       if (err) log(err)
-//       else {
-//         log(res)
-//         const fs = JSON.parse(res)
-//         fs.writeFile(`${__dirname}/../server/p5.txt`, data, 'utf8')
-//       }
-//     })
-// }
+function ESKEDDIT (data) {
+  // log(Object.keys(data))
+  return request
+    .post('http://localhost:3000/api/v1/baka')
+    .send(Object.keys(data))
+    .end(r => log(r))
+}

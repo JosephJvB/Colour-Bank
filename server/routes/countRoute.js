@@ -8,9 +8,9 @@ const router = express.Router()
 
 router.use(bodyParser.json())
 
-// router.get('/baka', (req, res) => {
-//   global.console.log('hi')
-//   res.send(fs).end()
+// router.post('/baka', (req, res) => {
+//   global.console.log('then do the writefile')
+//   global.console.log(req.body)
 // })
 
 router.get('/:col', (req, res) => {
