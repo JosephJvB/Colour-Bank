@@ -9,8 +9,11 @@ Click on the numbers to increment the number by +1. Click reset to set back to 0
 Values are saved in a database so refreshing the browser does not reset the number values.
 
 TODOS: Add and remove colours rather than having 4 hard coded. Also include some wild-card feature :)
-* take colours and RGB values from the database 
+* take colours and RGB values from the database [DONE]
+- container does all the database work (one get route, one put route) and maps out the single boxes. Single boxes recieve DB values as props and renders them (stateless component). happy with current structure :)
+
 * have a REDUXform on the front end to input: colour, rgb value (include a link to a place to look at RGB values... - regex type check on the rgb value but actually it's messy custom conditional checks hehe)
+ > Will need POST and DELETE routes + redux form
 
 TECHNICAL DEBT: 
 * Utils FOLDER - with designated files inside it, it's a damn mess in that file atm and it could be better.

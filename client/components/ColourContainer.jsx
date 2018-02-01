@@ -28,7 +28,8 @@ class ColourContainer extends Component {
 
   onClick (id, r) {
     // log(this.state)
-    let count = this.state.boxData[id - 1].count + 1
+    const box = this.state.boxData.find(b => b.id === id)
+    let count = box.count + 1
     if (r === 'reset') count = 0
     addCount(id, count)
       .then(() => this.updateBoxData())
