@@ -41,4 +41,4 @@ export default function fractalTree (p) {
   }
 }
 
-// want to make a slider like old mate, do I have access to the p5 dom library with my wrapper?
+// want to make a slider like old mate, do I have access to the p5 dom library with my wrapper??? WHO KNOWS NOT ME LOL

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import h from 'react-hyperscript'
 
-import { reqCount, addCount } from '../utils'
+import { reqColumn, addCount } from '../utils'
 
 const { console } = global
 
@@ -20,7 +20,7 @@ class ColourBox extends React.Component {
   }
 
   getCount () {
-    reqCount(this.props.col)
+    reqColumn(`id/${this.props.id}`)
       .then(r => this.setState({ count: r.body.count }))
       .catch(err => console.log(err))
   }
@@ -28,7 +28,7 @@ class ColourBox extends React.Component {
   colClick (r) {
     let count = this.state.count + 1
     if (r === 'reset') count = 0
-    addCount(this.props.col, count)
+    addCount(this.props.id, count)
       .then(() => this.getCount())
       .catch(err => console.log(err))
   }
@@ -38,7 +38,7 @@ class ColourBox extends React.Component {
     const hi = window.screen.availHeight
     return (
       h('div', {
-        'className': 'column is-3',
+        'className': 'column',
         'style': {
           'marginTop': hi / 8,
           'backgroundColor': this.props.rgb,
