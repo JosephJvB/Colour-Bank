@@ -2,51 +2,55 @@ import h from 'react-hyperscript'
 import { Link } from 'react-router-dom'
 import { Fragment, Component } from 'react'
 
-import { reqColumn } from '../utils'
+import { reqBigData, addCount } from '../utils'
 
 import ColourBox from './ColourBox'
 
 const { log } = global.console
 
-class ColourContainer extends Component() {
+class ColourContainer extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      colourArray: [],
-      rgbaArray: []
+      boxData: []
     }
     // binds here
-    // this.setColoursAndRGBA = this.setColoursAndRGBA.bind(this)
+    // this.getBigData = this.getBigData.bind(this)
   }
   // functions here
 
   componentDidMount () {
-    this.getColoursAndRGBA()
+    reqBigData()
+      .then(r => {
+        // log('big select', r.body)
+        this.setState({ boxData: r.body })
+      })
   }
 
-  setColoursAndRGBA () {
-    reqColumn('colour')
-      .then(r => this.setState({ colourArray: r.body.colours }))
-      .catch(err => log(err))
-    reqColumn('rgba')
-      .then(r => this.setState({ colourArray: r.body.rgbas }))
-      .catch(err => log(err))
-
-      // doing this.setState twice...seems dumb...maybe even causes errors....yikes
-
-    // this.setState({
-    //   colourArray: reqColumn('colour'),
-    //   rgbaArray: reqColumn('rgba')
-    // })
-  }
+  // getBigData () {
+  //   reqBigData()
+  //     .then(r => {
+  //       log(r)
+  //       this.setState({ boxData: r.body })
+  //     }) // might need to be something in r.body...do some console.logging
+  // }
 
   // const rgbs = ['rgba(236, 39, 39, 0.6)', 'rgba(7, 0, 234, 0.6)', 'rgba(251, 255, 35, 0.6)', 'rgba(40, 166, 1, 0.6)']
   // const cols = ['red', 'blue', 'yellow', 'green']
   render () {
+    const { boxData } = this.state
     return (
       h(Fragment, [
         h('div', { 'className': 'columns has-text-centered' },
-          rgbs.map((c, i) => h(ColourBox, { 'key': i, 'rgb': c, 'col': cols[i] }))
+        // map over info in state which will be array of objects from DB
+          boxData.map(box => h(ColourBox, {
+            key: box.id,
+            id: box.id,
+            rgba: box.rgba,
+            colour: box.colour,
+            count: box.count
+          })
+          )
         ),
         h(Link, { to: '/Wiz/1' }, [
           h('button', { 'className': 'button is-large' }, 'the Wizard awaits...')

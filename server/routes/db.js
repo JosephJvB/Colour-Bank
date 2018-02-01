@@ -1,17 +1,22 @@
 const config = require(`${__dirname}/../../knexfile`).development
 const knex = require('knex')(config)
 
-function getCount (c) {
+function getCount (id) {
   return knex('Bank')
-    .where('colour', c)
+    .where('id', id)
     .select('count')
     .first()
 }
 
-function addCount (col, newCount) {
+function addCount (id, newCount) {
   return knex('Bank')
-    .where('colour', col)
+    .where('id', id)
     .update({ count: newCount })
 }
 
-module.exports = { getCount, addCount }
+function getAllData () {
+  return knex('Bank')
+    .select()
+}
+
+module.exports = { getCount, addCount, getAllData }

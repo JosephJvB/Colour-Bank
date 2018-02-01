@@ -9,9 +9,9 @@ const { log } = global.console
 
 const url = 'http://localhost:3000/'
 
-function reqColumn (column) {
+function reqCount (id) {
   return request
-    .get(`${url}api/v1/${column}`)
+    .get(`${url}api/v1/${id}`)
 }
 
 function addCount (id, count) {
@@ -19,17 +19,10 @@ function addCount (id, count) {
     .put(`${url}api/v1/${id}/${count}`)
 }
 
-// function reqColourNames () {
-//   log('heres some colours')
-//   return request
-//     .get(`${url}api/v1/colours`)
-// }
-
-// function reqRGBA () {
-//   log('heres some RGBAs')
-//   return request
-//     .get(`${url}api/v1/colours`)
-// }
+function reqBigData () {
+  return request
+    .get(`${url}api/v1/all`)
+}
 
 function validate (vals) {
   // global.console.log(vals)
@@ -67,7 +60,7 @@ const renderField = ({ label, meta, input }) => {
   )
 }
 
-module.exports = { reqColumn, addCount, validate, renderField, sub }
+module.exports = { reqCount, reqBigData, addCount, validate, renderField, sub }
 
 // validate is getting called twice on load but never again, no matter interaction with input or submit
 // actually it gets called if the user inputs text, and then leaves it empty

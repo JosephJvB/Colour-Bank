@@ -1,57 +1,63 @@
 import React, { Fragment } from 'react'
 import h from 'react-hyperscript'
 
-import { reqColumn, addCount } from '../utils'
+import { addCount, reqCount } from '../utils'
 
-const { console } = global
+const { log } = global.console
 
 class ColourBox extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      count: null
+      count: 0
     }
     this.getCount = this.getCount.bind(this)
-    this.colClick = this.colClick.bind(this)
+    this.onClick = this.onClick.bind(this)
   }
 
   componentDidMount () {
-    this.getCount()
+    // log('boxprops', this.props)
+    this.setState({ count: this.props.count })
+  }
+
+  onClick (r) {
+    const { id } = this.props
+    let count = this.state.count + 1
+    if (r === 'reset') count = 0
+    addCount(id, count)
+      .then(() => this.getCount())
+      .catch(err => log(err))
   }
 
   getCount () {
-    reqColumn(`id/${this.props.id}`)
-      .then(r => this.setState({ count: r.body.count }))
-      .catch(err => console.log(err))
-  }
-
-  colClick (r) {
-    let count = this.state.count + 1
-    if (r === 'reset') count = 0
-    addCount(this.props.id, count)
-      .then(() => this.getCount())
-      .catch(err => console.log(err))
+    reqCount(this.props.id)
+      .then(r => {
+        log(r.body)
+        this.setState({ count: r.body.count })
+      })
+      .catch(err => log(err))
   }
 
   render () {
     // const w = window.screen.availWidth
     const hi = window.screen.availHeight
+    const { colour, count, rgba, id } = this.props
     return (
       h('div', {
         'className': 'column',
         'style': {
           'marginTop': hi / 8,
-          'backgroundColor': this.props.rgb,
+          'backgroundColor': rgba,
           'height': hi / 4
         }
       }, [
         h('button', {
           'className': 'button is-large',
-          'onClick': () => this.colClick('reset')
+          'onClick': () => this.onClick('reset')
         }, 'reset'),
         h('h1', {
           'className': 'subtitle is-1',
-          'onClick': this.colClick
+          'onClick': this.onClick
         }, this.state.count)
       ])
     )

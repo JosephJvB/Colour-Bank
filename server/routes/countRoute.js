@@ -13,15 +13,23 @@ router.use(bodyParser.json())
 //   global.console.log(req.body)
 // })
 
-router.get('/:col', (req, res) => {
-  const { col } = req.params
-  db.getCount(col)
+router.get('/all', (req, res) => {
+  db.getAllData()
+    .then(a => res.send(a))
+})
+
+// im concerned about how these two get routes would interact...
+// if I have my beasty select, I may not need that second GET route there..cos all that does is get me count, which I would get in my beasty select..
+
+router.get('/:id', (req, res) => {
+  const { id } = req.params
+  db.getCount(id)
     .then(c => res.send(c))
 })
 
-router.put('/:col/:count', (req, res) => {
-  const { col, count } = req.params
-  db.addCount(col, count)
+router.put('/:id/:count', (req, res) => {
+  const { id, count } = req.params
+  db.addCount(id, count)
     .then(() => res.status(200).end())
 })
 
