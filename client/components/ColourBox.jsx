@@ -41,23 +41,23 @@ class ColourBox extends React.Component {
   render () {
     // const w = window.screen.availWidth
     const hi = window.screen.availHeight
-    const { colour, count, rgba, id } = this.props
+    const { rgba } = this.props
     return (
       h('div', {
-        'className': 'column',
-        'style': {
-          'marginTop': hi / 8,
-          'backgroundColor': rgba,
-          'height': hi / 4
+        className: 'column',
+        style: {
+          marginTop: hi / 14,
+          backgroundColor: rgba,
+          height: hi / 4
         }
       }, [
         h('button', {
-          'className': 'button is-large',
-          'onClick': () => this.onClick('reset')
+          className: 'button is-large',
+          onClick: () => this.onClick('reset')
         }, 'reset'),
         h('h1', {
-          'className': 'subtitle is-1',
-          'onClick': this.onClick
+          className: 'subtitle is-1',
+          onClick: this.onClick
         }, this.state.count)
       ])
     )

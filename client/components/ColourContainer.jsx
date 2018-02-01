@@ -1,6 +1,6 @@
 import h from 'react-hyperscript'
 import { Link } from 'react-router-dom'
-import { Fragment, Component } from 'react'
+import { Fragment as F, Component } from 'react'
 
 import { reqBigData, addCount } from '../utils'
 
@@ -15,7 +15,6 @@ class ColourContainer extends Component {
       boxData: []
     }
     // binds here
-    // this.getBigData = this.getBigData.bind(this)
   }
   // functions here
 
@@ -27,21 +26,17 @@ class ColourContainer extends Component {
       })
   }
 
-  // getBigData () {
-  //   reqBigData()
-  //     .then(r => {
-  //       log(r)
-  //       this.setState({ boxData: r.body })
-  //     }) // might need to be something in r.body...do some console.logging
-  // }
-
-  // const rgbs = ['rgba(236, 39, 39, 0.6)', 'rgba(7, 0, 234, 0.6)', 'rgba(251, 255, 35, 0.6)', 'rgba(40, 166, 1, 0.6)']
-  // const cols = ['red', 'blue', 'yellow', 'green']
   render () {
     const { boxData } = this.state
     return (
-      h(Fragment, [
-        h('div', { 'className': 'columns has-text-centered' },
+      h(F, [
+        h(Link, { to: '/Wiz/1' }, [
+          h('button', { className: 'button is-large' }, 'the Wizard awaits...')
+        ]),
+        h(Link, { to: '/p5' }, [
+          h('button', { className: 'button is-large' }, 'p5 :)')
+        ]),
+        h('div', { className: 'columns has-text-centered' },
         // map over info in state which will be array of objects from DB
           boxData.map(box => h(ColourBox, {
             key: box.id,
@@ -52,12 +47,7 @@ class ColourContainer extends Component {
           })
           )
         ),
-        h(Link, { to: '/Wiz/1' }, [
-          h('button', { 'className': 'button is-large' }, 'the Wizard awaits...')
-        ]),
-        h(Link, { to: '/p5' }, [
-          h('button', { }, 'p5 :)')
-        ])
+        h(F, 'i\'m gonna put a form here ya heard')
       ])
     )
   }
