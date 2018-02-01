@@ -18,12 +18,6 @@ router.get('/all', (req, res) => {
     .then(a => res.send(a))
 })
 
-router.get('/:id', (req, res) => {
-  const { id } = req.params
-  db.getCount(id)
-    .then(c => res.send(c))
-})
-
 router.put('/:id/:count', (req, res) => {
   const { id, count } = req.params
   db.addCount(id, count)
