@@ -15,11 +15,13 @@ const WizOne = props => {
     h(Fragment, [
       'im WizOne',
       h('form', { onSubmit: handleSubmit(sub) }, [
-        h(Field, { name: 'wiz1Info',
+        h(Field, {
+          name: 'wiz1Info',
           component: renderField,
           label: 'wiz1',
           type: 'text',
-          placeholder: 'ur text here' })
+          placeholder: 'ur text here'
+        })
       ]),
       h(Link, { 'to': '/' }, [
         h('button', { className: 'button is-info' }, 'home sweet home')

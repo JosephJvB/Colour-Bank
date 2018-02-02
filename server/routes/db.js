@@ -18,4 +18,12 @@ function delBox (id) {
     .del()
 }
 
-module.exports = { addCount, getAllData, delBox }
+function addBox ({ colourInput, rgbaInput }) {
+  return knex('Bank')
+    .insert({
+      colour: colourInput,
+      rgba: rgbaInput
+    })
+}
+
+module.exports = { addCount, getAllData, delBox, addBox }

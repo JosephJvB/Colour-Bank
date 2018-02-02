@@ -5,7 +5,7 @@ import h from 'react-hyperscript'
 
 const hi = window.screen.availHeight
 
-const ColourBox = (props) => {
+const ColourBox = props => {
   const { box, onClick } = props
   const { id, rgba, count } = box
   return (

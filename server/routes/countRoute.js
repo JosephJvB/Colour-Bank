@@ -4,6 +4,8 @@ const bodyParser = require('body-parser')
 
 const db = require('./db')
 
+const { log } = global.console
+
 const router = express.Router()
 
 router.use(bodyParser.json())
@@ -27,6 +29,13 @@ router.put('/:id/:count', (req, res) => {
 router.delete('/delete/:id', (req, res) => {
   const { id } = req.params
   db.delBox(id)
+    .then(() => res.status(200).end())
+})
+
+router.post('/addBox', (req, res) => {
+  log(req.body)
+  const box = req.body
+  db.addBox(box)
     .then(() => res.status(200).end())
 })
 

@@ -2,9 +2,10 @@ import h from 'react-hyperscript'
 import { Link } from 'react-router-dom'
 import { Fragment as F, Component } from 'react'
 
-import { reqBigData, addCount, delBox } from '../utils'
+import { reqBigData, addCount, delBox, postBox } from '../utils'
 
 import ColourBox from './ColourBox'
+import BoxForm from './BoxForm'
 
 const { log } = global.console
 
@@ -16,12 +17,13 @@ class ColourContainer extends Component {
     }
     // binds here
     this.onClick = this.onClick.bind(this)
+    this.customSubmit = this.customSubmit.bind(this)
   }
   // functions here
   componentDidMount () {
     reqBigData()
       .then(r => {
-        // log('big select', r.body)
+        log('big select', r.body)
         this.setState({ boxData: r.body })
       })
   }
@@ -51,6 +53,12 @@ class ColourContainer extends Component {
       .catch(err => log(err))
   }
 
+  customSubmit (vals) {
+    log(vals)
+    postBox(vals)
+      .then(() => this.updateBoxData())
+  }
+
   render () {
     const { boxData } = this.state
     const { onClick } = this
@@ -66,7 +74,7 @@ class ColourContainer extends Component {
         // map over data in state which will be array of objects from DB :)
           boxData.map(box => h(ColourBox, { key: box.id, box, onClick }))
         ),
-        h(F, 'i\'m gonna put a form here ya heard')
+        h(BoxForm, { customSubmit: this.customSubmit })
       ])
     )
   }

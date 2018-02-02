@@ -14,6 +14,12 @@ TODOS: Add and remove colours rather than having 4 hard coded. Also include some
 
 * have a REDUXform on the front end to input: colour, rgb value (include a link to a place to look at RGB values... - regex type check on the rgb value but actually it's messy custom conditional checks hehe)
  > Will need POST and DELETE routes + redux form
+ DEL [DONE]
+ POST [x] POST ROUTE FRONT END STUFF
+
+ find a react colour picker for folks to choose things - stretchy
 
 TECHNICAL DEBT: 
 * Utils FOLDER - with designated files inside it, it's a damn mess in that file atm and it could be better.
+
+twitter account that tracks swearing in commit messages
