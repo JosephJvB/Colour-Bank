@@ -21,8 +21,8 @@ function delBox (id) {
 function addBox ({ colourInput, rgbaInput }) {
   return knex('Bank')
     .insert({
-      colour: colourInput,
-      rgba: rgbaInput
+      rgba: rgbaInput,
+      count: 0
     })
 }
 

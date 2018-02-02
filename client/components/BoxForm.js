@@ -25,16 +25,9 @@ const BoxForm = props => {
       h('br'),
       h('form', { onSubmit: handleSubmit(customSubmit) }, [
         h(Field, {
-          name: 'colourInput',
-          component: renderField,
-          label: 'colour name',
-          type: 'text',
-          placeholder: 'enter a colour'
-        }),
-        h(Field, {
           name: 'rgbaInput',
           component: renderField,
-          label: 'rgba value',
+          label: 'colour rgba value',
           type: 'text',
           placeholder: 'enter rgb'
         }),

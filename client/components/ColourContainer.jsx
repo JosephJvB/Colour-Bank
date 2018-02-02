@@ -23,7 +23,7 @@ class ColourContainer extends Component {
   componentDidMount () {
     reqBigData()
       .then(r => {
-        log('big select', r.body)
+        // log('big select', r.body)
         this.setState({ boxData: r.body })
       })
   }
@@ -54,7 +54,7 @@ class ColourContainer extends Component {
   }
 
   customSubmit (vals) {
-    log(vals)
+    // log(vals)
     postBox(vals)
       .then(() => this.updateBoxData())
   }

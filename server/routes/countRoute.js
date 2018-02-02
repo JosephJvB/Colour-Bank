@@ -33,7 +33,6 @@ router.delete('/delete/:id', (req, res) => {
 })
 
 router.post('/addBox', (req, res) => {
-  log(req.body)
   const box = req.body
   db.addBox(box)
     .then(() => res.status(200).end())
