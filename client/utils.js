@@ -14,6 +14,11 @@ function addCount (id, count) {
     .put(`${url}api/v1/${id}/${count}`)
 }
 
+function delBox (id) {
+  return request
+    .delete(`${url}api/v1/delete/${id}`)
+}
+
 function reqBigData () {
   return request
     .get(`${url}api/v1/all`)
@@ -55,7 +60,7 @@ const renderField = ({ label, meta, input }) => {
   )
 }
 
-module.exports = { reqBigData, addCount, validate, renderField, sub }
+module.exports = { reqBigData, addCount, delBox, validate, renderField, sub }
 
 // validate is getting called twice on load but never again, no matter interaction with input or submit
 // actually it gets called if the user inputs text, and then leaves it empty

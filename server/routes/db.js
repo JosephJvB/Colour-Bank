@@ -12,4 +12,10 @@ function getAllData () {
     .select()
 }
 
-module.exports = { addCount, getAllData }
+function delBox (id) {
+  return knex('Bank')
+    .where('id', id)
+    .del()
+}
+
+module.exports = { addCount, getAllData, delBox }

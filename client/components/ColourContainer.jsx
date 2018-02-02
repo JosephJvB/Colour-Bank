@@ -2,7 +2,7 @@ import h from 'react-hyperscript'
 import { Link } from 'react-router-dom'
 import { Fragment as F, Component } from 'react'
 
-import { reqBigData, addCount } from '../utils'
+import { reqBigData, addCount, delBox } from '../utils'
 
 import ColourBox from './ColourBox'
 
@@ -27,6 +27,11 @@ class ColourContainer extends Component {
   }
 
   onClick (id, r) {
+    if (r === 'delete') {
+      return delBox(id)
+        .then(() => this.updateBoxData())
+        .catch(err => log(err))
+    }
     // log(this.state)
     const box = this.state.boxData.find(b => b.id === id)
     let count = box.count + 1

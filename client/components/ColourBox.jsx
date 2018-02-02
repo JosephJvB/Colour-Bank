@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react'
+import React, { Fragment as F } from 'react'
 import h from 'react-hyperscript'
 
-const { log } = global.console
+// const { log } = global.console
+
+const hi = window.screen.availHeight
 
 const ColourBox = (props) => {
-  // const w = window.screen.availWidth
-  const hi = window.screen.availHeight
   const { box, onClick } = props
   const { id, rgba, count } = box
   return (
@@ -13,6 +13,7 @@ const ColourBox = (props) => {
       className: 'column',
       style: {
         marginTop: hi / 14,
+        marginBottom: hi / 14,
         backgroundColor: rgba,
         height: hi / 4
       }
@@ -24,7 +25,11 @@ const ColourBox = (props) => {
       h('h1', {
         className: 'subtitle is-1',
         onClick: () => onClick(id)
-      }, count)
+      }, count),
+      h('button', {
+        className: 'button',
+        onClick: () => onClick(id, 'delete')
+      }, 'delete')
     ])
   )
 }

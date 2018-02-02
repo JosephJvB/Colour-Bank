@@ -24,4 +24,10 @@ router.put('/:id/:count', (req, res) => {
     .then(() => res.status(200).end())
 })
 
+router.delete('/delete/:id', (req, res) => {
+  const { id } = req.params
+  db.delBox(id)
+    .then(() => res.status(200).end())
+})
+
 module.exports = router
