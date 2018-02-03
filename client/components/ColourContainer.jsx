@@ -17,7 +17,7 @@ class ColourContainer extends Component {
     }
     // binds here
     this.onClick = this.onClick.bind(this)
-    this.customSubmit = this.customSubmit.bind(this)
+    this.colourPick = this.colourPick.bind(this)
   }
   // functions here
   componentDidMount () {
@@ -53,8 +53,8 @@ class ColourContainer extends Component {
       .catch(err => log(err))
   }
 
-  customSubmit (vals) {
-    // log(vals)
+  colourPick (vals) {
+    // log(vals, vals.hex)
     postBox(vals)
       .then(() => this.updateBoxData())
   }
@@ -62,6 +62,9 @@ class ColourContainer extends Component {
   render () {
     const { boxData } = this.state
     const { onClick } = this
+    // const firstRow = boxData.slice(0, 4)
+    // const secondRow = boxData.slice(4, 8)
+    // const check = (arr) => arr.length > 0
     return (
       h(F, [
         h(Link, { to: '/Wiz/1' }, [
@@ -74,7 +77,11 @@ class ColourContainer extends Component {
         // map over data in state which will be array of objects from DB :)
           boxData.map(box => h(ColourBox, { key: box.id, box, onClick }))
         ),
-        h(BoxForm, { customSubmit: this.customSubmit })
+        // h('div', { className: 'columns has-text-centered' },
+        // // map over data in state which will be array of objects from DB :)
+        //   check(secondRow) && secondRow.map(box => h(ColourBox, { key: box.id, box, onClick }))
+        // ),
+        h(BoxForm, { submit: this.colourPick })
       ])
     )
   }

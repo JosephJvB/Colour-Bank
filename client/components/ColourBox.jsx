@@ -7,14 +7,14 @@ const hi = window.screen.availHeight
 
 const ColourBox = props => {
   const { box, onClick } = props
-  const { id, rgba, count } = box
+  const { id, colour, count } = box
   return (
     h('div', {
       className: 'column',
       style: {
         marginTop: hi / 14,
         marginBottom: hi / 14,
-        backgroundColor: rgba,
+        backgroundColor: colour,
         height: hi / 4
       }
     }, [

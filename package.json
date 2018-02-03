@@ -41,6 +41,7 @@
     "nodemon": "^1.11.0",
     "p5": "^0.6.0",
     "react": "16.2.0",
+    "react-color": "^2.13.8",
     "react-dom": "^16.2.0",
     "react-hyperscript": "^3.0.0",
     "react-p5-wrapper": "0.0.4",

@@ -1,6 +1,8 @@
 const config = require(`${__dirname}/../../knexfile`).development
 const knex = require('knex')(config)
 
+const { log } = global.console
+
 function addCount (id, newCount) {
   return knex('Bank')
     .where('id', id)
@@ -18,10 +20,11 @@ function delBox (id) {
     .del()
 }
 
-function addBox ({ colourInput, rgbaInput }) {
+function addBox (colour) {
+  log('db', colour)
   return knex('Bank')
     .insert({
-      rgba: rgbaInput,
+      colour,
       count: 0
     })
 }

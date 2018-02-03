@@ -24,10 +24,10 @@ function reqBigData () {
     .get(`${url}api/v1/all`)
 }
 
-function postBox (box) {
+function postBox (vals) {
   return request
     .post(`${url}api/v1/addBox`)
-    .send(box)
+    .send(vals)
 }
 
 function validate (vals) {

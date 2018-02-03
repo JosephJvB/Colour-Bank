@@ -33,8 +33,9 @@ router.delete('/delete/:id', (req, res) => {
 })
 
 router.post('/addBox', (req, res) => {
-  const box = req.body
-  db.addBox(box)
+  // log(req.body)
+  const colour = req.body.hex
+  db.addBox(colour)
     .then(() => res.status(200).end())
 })
 
