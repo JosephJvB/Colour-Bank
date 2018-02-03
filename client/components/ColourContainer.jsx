@@ -65,6 +65,7 @@ class ColourContainer extends Component {
     // const firstRow = boxData.slice(0, 4)
     // const secondRow = boxData.slice(4, 8)
     // const check = (arr) => arr.length > 0
+    // make a createRows function
     return (
       h(F, [
         h(Link, { to: '/Wiz/1' }, [

@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-// const fs = require('mz/fs')
+const fs = require('mz/fs')
 
 const db = require('./db')
 
@@ -33,7 +33,8 @@ router.delete('/delete/:id', (req, res) => {
 })
 
 router.post('/addBox', (req, res) => {
-  // log(req.body)
+  // fs.writeFile(`${__dirname}../../seeds/hshs.txt`, req, 'utf8')
+  log(req)
   const colour = req.body.hex
   db.addBox(colour)
     .then(() => res.status(200).end())
