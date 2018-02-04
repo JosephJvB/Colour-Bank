@@ -3,12 +3,12 @@ import h from 'react-hyperscript'
 import { Field, reduxForm } from 'redux-form'
 import { Link } from 'react-router-dom'
 
-import { validate } from '../../utils'
+import { validate, sub, renderField } from '../../utils'
 
 const { log } = global.console
 
 const WizTwo = (props) => {
-  const { handleSubmit, renderField, sub } = props
+  const { handleSubmit } = props
   return (
     h(F, [
       'wiz2',
@@ -19,16 +19,12 @@ const WizTwo = (props) => {
           label: 'wiz2',
           type: 'text',
           placeholder: 'ur text here'
-        }),
-        h('button', { type: 'submit' }, 'submit')
+        })
       ]),
       h(Link, { to: '/Wiz/1' }, [
-        h('button', {}, 'prev')
+        h('button', { className: 'button is-info' }, 'prev')
       ]),
-      h('button', { onClick: () => log(props) }, 'props'),
-      h(Link, { to: '/Wiz/3' }, [
-        h('button', {}, 'next')
-      ])
+      h('button', { onClick: () => log(props) }, 'props')
     ])
   )
 }
@@ -36,5 +32,6 @@ const WizTwo = (props) => {
 export default reduxForm({
   form: 'Wizard2',
   destroyOnUnmount: false,
+  forceUnregisterOnUnmount: true,
   validate
 })(WizTwo)

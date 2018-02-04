@@ -1,21 +1,42 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const fs = require('mz/fs')
 
 const db = require('./db')
+
+const { log } = global.console
 
 const router = express.Router()
 
 router.use(bodyParser.json())
 
-router.get('/:col', (req, res) => {
-  const { col } = req.params
-  db.getCount(col)
-    .then(c => res.send(c))
+// router.post('/baka', (req, res) => {
+//   global.console.log('then do the writefile')
+//   global.console.log(req.body)
+// })
+
+router.get('/all', (req, res) => {
+  db.getAllData()
+    .then(a => res.send(a))
 })
 
-router.put('/:col/:count', (req, res) => {
-  const { col, count } = req.params
-  db.addCount(col, count)
+router.put('/:id/:count', (req, res) => {
+  const { id, count } = req.params
+  db.addCount(id, count)
+    .then(() => res.status(200).end())
+})
+
+router.delete('/delete/:id', (req, res) => {
+  const { id } = req.params
+  db.delBox(id)
+    .then(() => res.status(200).end())
+})
+
+router.post('/addBox', (req, res) => {
+  // fs.writeFile(`${__dirname}../../seeds/hshs.txt`, req, 'utf8')
+  log(req)
+  const colour = req.body.hex
+  db.addBox(colour)
     .then(() => res.status(200).end())
 })
 

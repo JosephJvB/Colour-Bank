@@ -1,26 +1,72 @@
 import request from 'superagent'
+import { Link } from 'react-router-dom'
+import h from 'react-hyperscript'
+import { Fragment as F } from 'react'
+
+const { log } = global.console
+
+// const { getItem, setItem, clear } = window.localStorage
 
 const url = 'http://localhost:3000/'
 
-function reqCount (col) {
+function addCount (id, count) {
   return request
-    .get(`${url}api/v1/${col}`)
+    .put(`${url}api/v1/${id}/${count}`)
 }
 
-function addCount (col, count) {
+function delBox (id) {
   return request
-    .put(`${url}api/v1/${col}/${count}`)
+    .delete(`${url}api/v1/delete/${id}`)
+}
+
+function reqBigData () {
+  return request
+    .get(`${url}api/v1/all`)
+}
+
+function postBox (vals) {
+  return request
+    .post(`${url}api/v1/addBox`)
+    .send(vals)
 }
 
 function validate (vals) {
   // global.console.log(vals)
   const errors = { }
-  if (!vals.wiz1Info) {
-    // global.console.log('oi')
-    errors.wiz1Info = 'dingbat'
-  }
+  const fields = [ 'wiz1Info', 'wiz2Info', 'wiz3Info' ]
+  fields.forEach(field => {
+    if (!vals[field]) errors[field] = '<-- value here :)'
+  })
   return errors
 }
+
+// function passed to handleSubmit, logs the values entered
+async function sub (vals) {
+  // no luck in getting or setting yet..
+  await log(vals)
+}
+
+// function that mad props are injected into. renders the field: input, error and submit / continue button
+const renderField = ({ label, meta, input }) => {
+  // log(meta)
+  const { visited, error } = meta
+  let next = Number(label[3]) + 1 < 4 ? Number(label[3]) + 1 : 'results'
+  // if (next === 4) next = 'results'
+  const but = !error ? 'is-success' : 'is-danger'
+  input.autoComplete = 'off'
+  return (
+    h(F, [
+      h('label', label),
+      h('input', input),
+      h(Link, { to: `/Wiz/${next}` }, [
+        h('button', { type: 'submit', disabled: error, className: `button ${but}` }, 'next')
+      ]),
+      visited && error && h('span', error)
+    ])
+  )
+}
+
+module.exports = { postBox, reqBigData, addCount, delBox, validate, renderField, sub }
 
 // validate is getting called twice on load but never again, no matter interaction with input or submit
 // actually it gets called if the user inputs text, and then leaves it empty
@@ -38,4 +84,17 @@ function validate (vals) {
 //   }
 // }
 
-module.exports = { reqCount, addCount, validate }
+// old sub function
+// const { dispatch, clearFields, form } = await props
+// const field = await getField(form)
+// await log(props)
+// // await log(clearFields(false, form, 'wiz1Info').meta)
+// await dispatch(clearFields(false, form, field))
+
+// function getField(formName) {
+//   switch (formName) {
+//     case 'Wizard1': return 'wiz1Info'
+//     case 'Wizard2': return 'wiz2Info'
+//     case 'Wizard3': return 'wiz3Info'
+//   }
+// }
