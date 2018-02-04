@@ -20,6 +20,7 @@ const renderField = (props) => {
 
 const BoxForm = props => {
   const { handleSubmit, submit } = props
+  const w = window.screen.availWidth
   return (
     h(F, [
       'i\'m the form',
@@ -37,7 +38,7 @@ const BoxForm = props => {
       //     // onClick: props.dispatch.clearFields??? or does that only exist in
       //   }, 'submit')
       // ])
-      h(SwatchesPicker, { onChangeComplete: (vals) => submit(vals) })
+      h(SwatchesPicker, { onChangeComplete: submit, width: w, height: 160 })
     ])
   )
 }
